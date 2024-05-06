@@ -37,6 +37,13 @@ export default function Slider() {
               rotate: 50,
             },
           },
+          1440: {
+            slidesPerView: 6,
+            spaceBetween: 15,
+            coverflowEffect: {
+              rotate: 30,
+            },
+          },
         }}
         modules={[EffectCoverflow, Pagination, Autoplay]}
         loop={true}
