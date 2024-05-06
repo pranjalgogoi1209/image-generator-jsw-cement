@@ -56,13 +56,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 2vw;
 }
 
 @media all and (min-width: 480px) {
   .Email {
     .container {
-      width: 60vw;
-      height: 40vw;
+      width: 50%;
+      height: 65%;
       gap: 4vw;
       padding: 2vw;
       border-radius: 2vw;
@@ -84,8 +85,8 @@
       }
 
       .close {
-        right: 1%;
-        font-size: 6vw;
+        right: -4vw;
+        font-size: 3.5vw;
       }
 
       .loader {

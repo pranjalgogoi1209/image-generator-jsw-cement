@@ -6,6 +6,7 @@ export default function PrintFeature({
   printRef,
   generatedImg,
 }) {
+  // console.log(printRef.current);
   // handlePrint
   const handlePrint = useReactToPrint({
     content: () => printRef.current,

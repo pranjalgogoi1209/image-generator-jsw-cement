@@ -5,30 +5,19 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import styles from "./generatedImagePage.module.css";
 import Header from "../../components/header/Header";
-import DownloadFeature from "../../components/generatedImage/downloadFeature/DownloadFeature";
-import PrintFeature from "../../components/generatedImage/printFeature/PrintFeature";
-import { Link } from "react-router-dom";
 
-import Email from "../../components/email/Email";
-import Qr from "../../components/qr/Qr";
 import { MdModeEditOutline } from "react-icons/md";
 import { FaWandMagicSparkles } from "react-icons/fa6";
-import loader from "./../../assets/generatedImagePage/loader.mp4";
+import { useNavigate } from "react-router-dom";
 
-export default function GeneratedImagePage({ capturedImage }) {
-  const printRef = useRef();
-  const exportRef = useRef();
-  const showImgRef = useRef();
+export default function GeneratedImagePage({
+  capturedImage,
+  setUrl,
+  setPrintImage,
+  setGeneratedImg,
+}) {
   const [prompt, setPrompt] = useState("");
-  const [generatedImg, setGeneratedImg] = useState();
-  const [printImage, setPrintImage] = useState();
-  const [showQr, setShowQr] = useState(false);
-  const [showEmail, setShowEmail] = useState(false);
-  const [url, setUrl] = useState();
-
-  generatedImg && console.log("generated Image =>", generatedImg);
-
-  capturedImage && console.log("captured Image =>", capturedImage);
+  const navigate = useNavigate();
 
   prompt && console.log("prompt =>", prompt);
 
@@ -61,27 +50,33 @@ export default function GeneratedImagePage({ capturedImage }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("form submitted");
-    setPrintImage("");
-    if (prompt === "") {
-      toast.error("Please enter a prompt to generate image", toastOptions);
+
+    if (prompt === "" || !capturedImage) {
+      toast.error(
+        "Please enter a prompt to generate image or capture your image again",
+        toastOptions
+      );
     } else {
-      showImgRef.current.style.display = "flex";
+      console.log("form submitted");
       setGeneratedImg("");
+      setPrintImage("");
       axios
         .post("https://h.ngrok.dev/img2txt", {
           data: prompt,
           image: capturedImage.split(",")[1],
-          // image: capturedImage,
         })
         .then(function (response) {
           console.log(response);
-          setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
+          setGeneratedImg(`data:image/webp;base64,${response.data.result}
+          `);
+          setPrintImage(`data:image/webp;base64,${response.data.result}
+          `);
           getUrl(response.data.result);
         })
         .catch(function (error) {
           console.log(error);
         });
+      navigate("/share");
     }
   };
 
@@ -129,70 +124,6 @@ export default function GeneratedImagePage({ capturedImage }) {
                 relaxed and sophisticated demeanor
               </li>
             </ol>
-          </div>
-
-          {/* share features */}
-          <div className={styles.btns}>
-            {/* download feature */}
-            <DownloadFeature exportRef={exportRef} />
-
-            {/* print feature */}
-            <PrintFeature
-              setPrintImage={setPrintImage}
-              printRef={printRef}
-              generatedImg={generatedImg}
-            />
-
-            {/* email feature */}
-            <button className={styles.qr} onClick={() => setShowEmail(true)}>
-              Email
-            </button>
-
-            {/* qr feature */}
-            <button className={styles.qr} onClick={() => setShowQr(true)}>
-              Qr
-            </button>
-
-            <button className={styles.qr}>
-              <Link to={"/"} style={{ color: "#fff", textDecoration: "none" }}>
-                Home{" "}
-              </Link>
-            </button>
-
-            {/* qr feature */}
-            {showQr && <Qr url={url} setShowQr={setShowQr} />}
-
-            {/* email feature */}
-            {showEmail && (
-              <Email setShowEmail={setShowEmail} url={url} prompt={prompt} />
-            )}
-          </div>
-        </div>
-        <div className={styles.resultContainer}>
-          <div className={styles.generatedImgContainer} ref={showImgRef}>
-            {printImage ? (
-              <div className={styles.image} ref={exportRef}>
-                <img
-                  src={printImage}
-                  alt="generated image"
-                  ref={printRef}
-                  id="printableArea"
-                />
-              </div>
-            ) : (
-              /*  <div className={styles.loading}>
-                <div className={styles.ldsRing}>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div> */
-
-              <video autoPlay loop muted className={styles.video}>
-                <source src={loader} height={100} width={100} />
-              </video>
-            )}
           </div>
         </div>
       </main>

@@ -3,10 +3,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import CaptureImagePage from "./pages/captureImagePage/CaptureImagePage";
 import GeneratedImagePage from "./pages/generatedImagePage/GeneratedImagePage";
+import SharePage from "./pages/sharePage/SharePage";
 
 export default function App() {
   const [capturedImage, setCapturedImg] = useState();
-
+  const [printImage, setPrintImage] = useState();
+  const [generatedImg, setGeneratedImg] = useState();
+  const [url, setUrl] = useState();
   return (
     <BrowserRouter>
       <Routes>
@@ -19,7 +22,26 @@ export default function App() {
 
         <Route
           path="/generated-image"
-          element={<GeneratedImagePage capturedImage={capturedImage} />}
+          element={
+            <GeneratedImagePage
+              capturedImage={capturedImage}
+              setUrl={setUrl}
+              setPrintImage={setPrintImage}
+              setGeneratedImg={setGeneratedImg}
+            />
+          }
+        />
+
+        <Route
+          path="/share"
+          element={
+            <SharePage
+              printImage={printImage}
+              setPrintImage={setPrintImage}
+              generatedImg={generatedImg}
+              url={url}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

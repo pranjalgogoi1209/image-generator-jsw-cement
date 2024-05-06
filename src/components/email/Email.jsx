@@ -79,13 +79,13 @@ export default function Email({ setShowEmail, url, prompt }) {
               console.log("email api response =>", response);
               setLoading(false);
               toast.success("Email has sent successfully", toastOptions);
+              navigate("/");
             })
             .catch(function (error) {
               console.log(error);
               toast.error("Something wrong...", toastOptions);
             });
-          navigate("/");
-        }, 2000);
+        }, 500);
       } else {
         toast.error("Please enter a correct email", toastOptions);
       }
