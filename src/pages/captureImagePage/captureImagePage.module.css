@@ -1,0 +1,132 @@
+.CaptureImagePage {
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  .captureImage {
+    /* border: 1px solid white; */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    .webcamContainer {
+      position: relative;
+      width: 35vw;
+      height: 26.8vw;
+      background-color: var(--themeColor1);
+      border: 0.3vw solid var(--themeColor1);
+      /* border-bottom: 0vw solid #fff; */
+      border-radius: 1vw;
+      .webcamParent {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        #webcam {
+          border-radius: 1vw;
+          margin: 0 auto;
+          width: 100.3%;
+          height: 100%;
+          object-fit: cover;
+        }
+        .capturedImage {
+          border-radius: 2vw;
+          width: 100.3%;
+          height: 100%;
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+          /* transform: scale(1.65, 1); */
+        }
+      }
+      /* .frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      } */
+    }
+
+    .capture {
+      /* border: 1px solid white; */
+      display: flex;
+      gap: 2vw;
+      button {
+        color: var(--themeColor2);
+        /* border: none; */
+        border: 0.2vw solid var(--themeColor1);
+        text-align: center;
+        width: 16vw;
+        outline: none;
+        padding: 0.2vw 2vw;
+        font-weight: 600;
+        font-size: 2.5vw;
+        border-radius: 0.6vw;
+        cursor: pointer;
+        transform: translateY(-0.1vw);
+        transition: all ease 0.5s;
+        box-shadow: 0.1vw 0.1vw 0.4vw rgba(0, 0, 0, 0.5);
+        &:hover {
+          box-shadow: none;
+          transform: translateY(0);
+        }
+      }
+      .captureRetake {
+        background-color: var(--themeColor1);
+        color: var(--themeColor3);
+      }
+      .submit {
+        color: var(--themeColor1);
+        /* border: 0.1vw solid #fff; */
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 991px) {
+  .CaptureImagePage {
+    /* border: 1px solid white; */
+    gap: 15vw;
+    .captureImage {
+      /* border: 1px solid white; */
+      gap: 5vw;
+      .webcamContainer {
+        position: relative;
+        width: 50vw;
+        height: 40.8vw;
+        border: 0.6vw solid #fff;
+        /* border-radius: 1vw; */
+      }
+
+      .capture {
+        /* border: 1px solid white; */
+        gap: 4vw;
+        button {
+          border: 2px solid #fff;
+          width: 22.5vw;
+          outline: none;
+          padding: 1vw 3vw;
+          font-size: 3.5vw;
+          border-radius: 0.6vw;
+          &:hover {
+            box-shadow: none;
+            transform: translateY(0);
+          }
+        }
+        .captureRetake {
+          background-color: #fcb017;
+        }
+        .submit {
+          color: #fff;
+          /* border: 0.1vw solid #fff; */
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

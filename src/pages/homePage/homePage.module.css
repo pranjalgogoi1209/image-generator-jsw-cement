@@ -1,0 +1,30 @@
+.HomePage {
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+
+  main {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 2vw;
+  }
+}
+
+@media all and (max-width: 991px) {
+  .HomePage {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    gap: 15vw;
+
+    main {
+      /* border: 1px solid black; */
+      /* justify-content: space-between; */
+      gap: 15vw;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+:root {
+  --themeColor1: #1b4d9a;
+  --themeColor2: #000;
+  --themeColor3: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  /* border: 1px solid red; */
+  padding: 2vw;
+  background-image: url("./../src/assets/roarBg.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+@media all and (max-width: 991px) {
+  body {
+    padding: 4vw;
+  }
+}
