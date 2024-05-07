@@ -38,7 +38,7 @@ export default function PrintFeature({
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
         canvas.width = img.width * 1;
-        canvas.height = img.height * 1.06;
+        canvas.height = img.height * 1;
         context.drawImage(img, 0, 0, canvas.width, canvas.height);
         const scaledImage = canvas.toDataURL("image/png");
         setPrintImage(scaledImage);

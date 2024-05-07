@@ -1,0 +1,98 @@
+.AvatarPage {
+  /* border: 1px solid #fff; */
+  gap: 2vw;
+  /* .avatarText {
+    width: 60vw;
+  } */
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h1 {
+    color: var(--themeColor1);
+  }
+
+  .main {
+    /* border: 1px solid #fff; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+    justify-content: center;
+    align-items: center;
+    .singleImageContainer {
+      width: 8vw;
+      height: 10vw;
+      overflow: hidden;
+      cursor: pointer;
+      &:hover .imgContainer {
+        transform: scale(1.05);
+      }
+      &:hover .hoverContainer {
+        opacity: 1;
+      }
+      .parent {
+        position: relative;
+        /* width: 100%; */
+        .imgContainer {
+          width: 100%;
+          transition: all ease 0.5s;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .showHoverContainer {
+          opacity: 1 !important;
+          border: 0.2vw solid var(--themeColor1);
+        }
+        .hoverContainer {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            transparent,
+            transparent,
+            rgba(0, 0, 0, 1)
+          );
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transition: all ease 0.5s;
+          .selectIcon {
+            position: absolute;
+            bottom: 5%;
+            left: 37%;
+            width: 2vw;
+          }
+        }
+      }
+    }
+  }
+  button {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7);
+    /* width: 12vw; */
+    padding: 0.5vw 0.8vw;
+    cursor: pointer;
+    /* border: none; */
+    border: 1px solid #fff;
+    outline: none;
+    background-color: var(--themeColor1);
+    color: var(--themeColor3);
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+    font-size: 1.5vw;
+    border-radius: 0.6vw;
+    font-weight: bold;
+    transition: all ease 0.5s;
+    svg {
+      font-size: 1.5vw;
+    }
+    &:hover {
+      transform: translateX(0.5vw);
+    }
+  }
+}

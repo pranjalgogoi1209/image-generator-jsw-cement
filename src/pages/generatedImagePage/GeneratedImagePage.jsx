@@ -1,14 +1,15 @@
 import React from "react";
+import styles from "./generatedImagePage.module.css";
 import { useState, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import styles from "./generatedImagePage.module.css";
 import Header from "../../components/header/Header";
-
 import { MdModeEditOutline } from "react-icons/md";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+
+import Avatar from "../../components/avatar/Avatar";
 
 export default function GeneratedImagePage({
   capturedImage,
@@ -125,6 +126,15 @@ export default function GeneratedImagePage({
               </li>
             </ol>
           </div>
+        </div>
+
+        <div className={styles.AvatarContainer}>
+          <Avatar
+            capturedImage={capturedImage}
+            setUrl={setUrl}
+            setGeneratedImg={setGeneratedImg}
+            setPrintImage={setPrintImage}
+          />
         </div>
       </main>
       <ToastContainer />
