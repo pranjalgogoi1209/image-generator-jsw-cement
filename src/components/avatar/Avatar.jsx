@@ -34,7 +34,7 @@ export default function Avatar({
   };
 
   // filtering card image with actual image
-  const filterOriginalImg = index => {
+  const filterOriginalImg = (index) => {
     const filteredActualImgArr = originalImgsArr.filter(
       (actualImg, ActualIndex) => ActualIndex === index
     );
@@ -42,7 +42,7 @@ export default function Avatar({
   };
 
   // image uploading on server
-  const getUrl = url => {
+  const getUrl = (url) => {
     axios
       .post(
         "https://adp24companyday.com/aiphotobooth/aiphotobooth_comiccon/upload.php",
@@ -66,20 +66,19 @@ export default function Avatar({
     setGeneratedImg("");
     setPrintImage("");
     if (capturedImage) {
-      base64(originalImg, base64Data => {
-
+      base64(originalImg, (base64Data) => {
         console.log("Base64 data:", base64Data);
         setSelectedImage(base64Data);
-        
+
         try {
           axios
             .post("https://52.56.108.15/upload_rec", {
               image: capturedImage.split(",")[1],
               choice: base64Data.split(",")[1],
-              status:"FREE"
+              status: "PREMIUM",
             })
             .then(function (response) {
-              console.log(response,'response from swap server');
+              console.log(response, "response from swap server");
               setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
               setPrintImage(`data:image/webp;base64,${response.data.result}
               `);
