@@ -72,7 +72,7 @@ export default function Avatar({
 
         try {
           axios
-            .post("https://h.ngrok.dev/rec", {
+            .post("https://52.56.108.15/upload_rec", {
               image: capturedImage.split(",")[1],
               choice: base64Data.split(",")[1],
             })
