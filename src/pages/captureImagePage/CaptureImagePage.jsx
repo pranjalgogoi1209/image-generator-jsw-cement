@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Webcam from "react-webcam";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,6 +6,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import styles from "./captureImagePage.module.css";
 import Header from "../../components/header/Header";
+import useCropFace from "../../customHooks/useCrop";
+// import { image } from "html2canvas/dist/types/css/types/image";
 
 export default function CaptureImagePage({ setCapturedImg }) {
   const navigate = useNavigate();
@@ -14,6 +16,7 @@ export default function CaptureImagePage({ setCapturedImg }) {
 
   const handleCapture = e => {
     if (e.target.innerText === "Capture") {
+      
       setImg(webRef.current.getScreenshot());
       e.target.innerText = "Retake";
     } else {
@@ -21,6 +24,8 @@ export default function CaptureImagePage({ setCapturedImg }) {
       e.target.innerText = "Capture";
     }
   };
+
+  
 
   // toast options
   const toastOptions = {

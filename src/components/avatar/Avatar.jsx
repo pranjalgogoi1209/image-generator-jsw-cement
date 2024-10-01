@@ -67,17 +67,19 @@ export default function Avatar({
     setPrintImage("");
     if (capturedImage) {
       base64(originalImg, base64Data => {
-        // console.log("Base64 data:", base64Data);
-        setSelectedImage(base64Data);
 
+        console.log("Base64 data:", base64Data);
+        setSelectedImage(base64Data);
+        
         try {
           axios
             .post("https://52.56.108.15/upload_rec", {
               image: capturedImage.split(",")[1],
               choice: base64Data.split(",")[1],
+              status:"FREE"
             })
             .then(function (response) {
-              console.log(response);
+              console.log(response,'response from swap server');
               setGeneratedImg(`data:image/webp;base64,${response.data.result}`);
               setPrintImage(`data:image/webp;base64,${response.data.result}
               `);
