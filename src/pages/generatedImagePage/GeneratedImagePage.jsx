@@ -83,6 +83,7 @@ export default function GeneratedImagePage({
         .post("https://52.56.108.15/image_generator_advanced", {
           data: prompt,
           metadata: metaData,
+          style: "realistic",
         })
         .then(function (response) {
           console.log(response);
