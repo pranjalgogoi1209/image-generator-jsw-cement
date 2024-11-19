@@ -52,7 +52,7 @@ export default function GeneratedImagePage({
   const getUrl = (url) => {
     axios
       .post(
-        "https://adp24companyday.com/aiphotobooth/aiphotobooth_godrej_ai_prompt/upload.php",
+        "https://analytiq4.com/aiphotobooth/aiphotobooth_bluehat/upload.php",
         {
           img: url,
         }
