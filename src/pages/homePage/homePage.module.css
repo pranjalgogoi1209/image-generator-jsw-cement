@@ -1,5 +1,6 @@
 .HomePage {
-  /* border: 1px solid white; */
+  /* border: 10px solid red; */
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   gap: 2vw;
